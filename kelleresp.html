@@ -2,10 +2,29 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=https://developerojj.grafana.net/public-dashboards/15d33bd6418f40ef9eef8d2b08da5e6a">
-    <title>Weiterleitung...</title>
+    <title>Passwortgeschützte Weiterleitung</title>
+    <script>
+        function checkPassword() {
+            var enteredPassword = document.getElementById('password').value;
+            var correctPassword = "Passwort";
+
+            if (enteredPassword === correctPassword) {
+                window.location.href = "https://developerojj.grafana.net/public-dashboards/15d33bd6418f40ef9eef8d2b08da5e6a";
+            } else {
+                document.getElementById('error').innerText = "Falsches Passwort. Bitte versuche es erneut.";
+            }
+        }
+    </script>
 </head>
 <body>
-    <p>Du wirst weitergeleitet...</p>
+    <h2>Passwort erforderlich</h2>
+    
+    <p id="error" style="color: red;"></p>
+    
+    <form onsubmit="event.preventDefault(); checkPassword();">
+        <label for="password">Passwort:</label>
+        <input type="password" id="password" required>
+        <button type="submit">Weiter</button>
+    </form>
 </body>
 </html>
