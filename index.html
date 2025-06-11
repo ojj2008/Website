@@ -1,65 +1,316 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Persönliche Website von jonathan Westphal">
-    <title>Persönliche Website</title>
-    <link rel="stylesheet" href="main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jonathan Westphal</title>
+  <style>
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #039be5;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background-color: #0277bd;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+      gap: 40px;
+    }
+
+    .timeline {
+      flex: 1;
+      position: relative;
+      padding-left: 40px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: #039be5;
+    }
+
+    .event {
+      position: relative;
+      margin: 50px 0;
+      padding-left: 30px;
+    }
+
+    .event::before {
+      content: '';
+      position: absolute;
+      left: -36px;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      background-color: white;
+      border: 4px solid #039be5;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .event.continued {
+        margin-top: -30px;
+        padding-top: 0;
+    }
+
+    .event h3 {
+      margin: 0 0 5px;
+      color: #0277bd;
+    }
+
+    .event p {
+      margin: 0;
+      color: #444;
+    }
+
+    .image-section {
+      flex: 1;
+      text-align: center;
+    }
+
+    .slideshow-container {
+      position: relative;
+      max-width: 100%;
+      margin: auto;
+    }
+
+    .slide {
+      display: none;
+    }
+
+    .slide img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      margin-top: -22px;
+      padding: 8px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      user-select: none;
+      background: rgba(0,0,0,0.4);
+      border-radius: 3px;
+    }
+
+    .next {
+      right: 0;
+    }
+
+    .prev {
+      left: 0;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    .dots {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .dot {
+      cursor: pointer;
+      height: 12px;
+      width: 12px;
+      margin: 0 4px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .active, .dot:hover {
+      background-color: #039be5;
+    }
+
+    .caption {
+      text-align: center;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    footer {
+      background-color: #333;
+      color: #ccc;
+      text-align: center;
+      padding: 20px 10px;
+      margin-top: 60px;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .timeline::before {
+        left: 10px;
+      }
+
+      .event {
+        padding-left: 20px;
+      }
+
+      .event::before {
+        left: -28px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <header>
-        <div class="container">
-            <h1>Willkommen auf meiner Website</h1>
-            <nav>
-                <ul>
-                    <li><a href="#about">Über mich</a></li>
-                    <li><a href="#projects">Projekte</a></li>
-                    <li><a href="#contact">Kontakt</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <main>
-        <section id="about" class="section">
-            <div class="container">
-                <h2>Über mich</h2>
-                
-                <p>Hallo, mein Name ist Jonathan Westphal, aktuell gehe ich noch in die Schule aufs Bismarck Gymnasium in Karlsruhe</p>
-            </div>
-        </section>
+<header>
+  <h1>Jonathan Westphal</h1>
+</header>
 
-        <section id="projects" class="section">
-            <div class="container">
-                <h2>Projekte</h2>
-                <div class="project-grid">
-                    <div class="project-card">
-                        <h3><a href="https://www.cansat.de/">CanSat Wettbewerb</a></h3>
-                        <p>Im Jahr 2024 habe ich erfolgreich im Team <a href="https://silvasatellit.github.io/website/">SilvaSatellit</a> teilgenommen und den 2. Platz gewonnen</p>
-                    </div>
-                    <div class="project-card">
-                        <h3><a href="https://www.jugend-forscht.de/">Jugend Forscht</a></h3>
-                        <p>Ich arbeite gerade noch weiter an meinem Jugend Forscht Projekt in der Kategorie Technik, weitere Informationen unter <a href="https://github.com/ojj2008/Smarte-Steckdosenleiste">Smarte Steckdosenleiste</a></p>
-                    </div>
-                </div>
-            </div>
-        </section>
+<nav>
+  <a href="#">Über mich</a>
+  <a href="#">Projekte</a>
+  <a href="#kontakt">Kontakt</a>
+</nav>
 
-        <section id="contact" class="section">
-            <div class="container">
-                <h2>Kontakt</h2>
-                <p>Haben Sie Fragen oder möchten Sie mich kontaktieren? Schreiben Sie mir gerne eine E-Mail an: <a href="mailto:mail@jonathan-westphal.de">mail@jonathan-westphal.de</a>.</p>
-            </div>
-        </section>
-    </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Jonathan Westphal. Alle Rechte vorbehalten. Ich übernehme keine Haftung für weiterführende Links.</p>
-        </div>
-    </footer>
+<div class="container">
+  <div class="timeline">
+    <div class="event">
+      <h3>Grundschule</h3>
+      <p>2014–2018 – Besuch der Grundschule in Karlsruhe.</p>
+    </div>
+    <div class="event">
+      <h3>Bismarck-Gymnasium</h3>
+      <p>Seit 2018 – Besuch des <strong><a href="https://bismarck-gymnasium.de/hochbegabtenzug-2">Hochbegabtenzuges</a></strong></p>
+    </div>
+    <div class="event">
+      <h3>Aufnahme ins <a href="https://www.life-science-lab.org/cms/">Life-Science Lab</a></h3>
+      <p>Seit 2023 – Fördereinrichtung für besonders mathematisch und naturwissenschaftlich begabte Schüler</p>
+    </div>
+    <div class="event">
+      <h3>CanSat Wettbewerb</h3>
+      <p>2024 – Teilnahme im Team <strong><a href="https://silvasatellit.github.io/website/">Silva Satellit</a></strong>, 2. Platz.</p>
+    </div>
+    <div class="event">
+      <h3>Jugend Forscht</h3>
+      <p>2025 - <strong><a href="https://github.com/ojj2008/Smarte-Steckdosenleiste">Smarte Steckdosenleiste</a></strong> – Technikprojekt zur intelligenten Stromnutzung, Sonderpreis im Landeswettbewerb</p>
+    </div>
+  </div>
+
+  <div class="image-section">
+    <div class="slideshow-container">
+      <div class="slide fade">
+        <img src="assets/Regionalwettbewerb_Jugend_Forscht_2025.webp" alt="Regionalwettbewerb_Jugend_Forscht_2025">
+      </div>
+      <div class="slide fade">
+        <img src="assets/Landeswettbewerb_Jugend_Forscht_2025.webp" alt="Landeswettbewerb_Jugend_Forscht_2025">
+      </div>
+
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <div class="dots">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+    <div class="caption">Projektbilder zum Durchklicken oder automatischem Wechsel</div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 Jonathan Westphal. Alle Rechte vorbehalten. Keine Haftung für externe Links.</p>
+  <p id="kontakt">Kontakt: <a href="mailto:mail@jonathan-westphal.de">mail@jonathan-westphal.de</a></p>
+</footer>
+
+
+<script>
+let slideIndex = 0;
+let slides = document.getElementsByClassName("slide");
+let dots = document.getElementsByClassName("dot");
+
+function showSlides() {
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) { slideIndex = 1; }
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
+  setTimeout(showSlides, 4000); // 4 Sekunden
+}
+
+function plusSlides(n) {
+  slideIndex += n - 1;
+  if (slideIndex < 0) slideIndex = slides.length - 1;
+  if (slideIndex >= slides.length) slideIndex = 0;
+  manualSlide(slideIndex);
+}
+
+function currentSlide(n) {
+  slideIndex = n - 1;
+  manualSlide(slideIndex);
+}
+
+function manualSlide(n) {
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[n].style.display = "block";
+  dots[n].className += " active";
+}
+
+showSlides(); // Start automatisch
+</script>
+
 </body>
 </html>
